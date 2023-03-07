@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background-image: url('./assets/bg.jpeg');
+  background-image: url('./assets/bg3.webp');
   background-size: cover;
   background-position: top center;
 }
