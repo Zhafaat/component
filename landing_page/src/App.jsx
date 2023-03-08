@@ -15,7 +15,7 @@ function App() {
     if (storedEmail) {
       setAllEmail(storedEmail);
     }
-    console.log(allEmail)
+    // console.log(allEmail)
     
   }, []);
 
@@ -44,7 +44,7 @@ function App() {
           MY Coding Project
         </h1>
 
-        <div className="text-lg md:text-2xl lg:text-3xl py-2 px-4 md:py-4 md:px-10 lg:py-6 lg:px-12 bg-white bg-opacity-10 w-fit mx-auto mb-8 rounded-full">
+        <div className="text-lg md:text-2xl lg:text-4xl py-2 px-4 md:py-4 md:px-10 lg:py-6 lg:px-12 bg-white bg-opacity-10 w-fit mx-auto mb-8 rounded-full">
           {date.toString()}
         </div>
 
@@ -56,7 +56,7 @@ function App() {
             type="email" 
             name="user email"
             value={email}
-            className="text-lg md:text-2xl palceholder:text-gray-400 placeholder:italic py-4 px-6 md:px-10 lg:py-6 lg:px-12 bg-white bg-opacity-10 focus:bg-opacity-20 duration-150 rounded-full md:rounded-tr-none md:rounded-br none mb-4 md:mb-8 outline-none"
+            className="text-lg md:text-1xl md:w-96 palceholder:text-gray-400 placeholder:italic py-4 px-6 md:px-10 lg:py-6 lg:px-12 bg-white bg-opacity-10 focus:bg-opacity-20 duration-150 rounded-full md:rounded-tr-none md:rounded-br none mb-4 md:mb-8 outline-none"
             onChange={handleChange} />
             
             <input 
