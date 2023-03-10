@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <button :class="{ 'mic': !isRecording, 'stop': isRecording }" @click="toggleMic">{{ isRecording ? 'Stop' : 'Record' }}</button>
-    <div class="transcript" v-text="transcript"></div>
+    <textarea name="transkript" class="transcript" v-model="transcript" cols="60" rows="10"></textarea>
   </div>
 </template>
 
@@ -33,27 +33,29 @@ export default {
 
       recognition.onresult = (event) => {
         const interimTranscript = Array.from(event.results)
-          .map(result => result[0])
-          .map(result => result.transcript)
-          .join('');
-
+        .map(result => result[0])
+        .map(result => result.transcript)
+        .join('')
+        console.log(interimTranscript)
+        
         if (event.results[0].isFinal) {
           const finalTranscript = interimTranscript.trim();
           console.log(`Final transcript: ${finalTranscript}`);
           checkForCommand(finalTranscript);
         }
-
+        
         transcript.value = interimTranscript;
+        
       };
-
+      
       recognition.onerror = (event) => {
         console.error(`Speech recognition error occurred: ${event.error}`);
         isRecording.value = false;
       };
-
+      
       recognition.start();
     });
-
+    
     const toggleMic = () => {
       if (isRecording.value) {
         recognition.stop();
@@ -75,7 +77,7 @@ export default {
     return {
       transcript,
       isRecording,
-      toggleMic
+      toggleMic,
     };
   }
 };
@@ -96,7 +98,7 @@ export default {
     line-height: 1.5;
   }
   
-  .container {
+  .app {
     max-width: 600px;
     margin: 0 auto;
     padding: 40px;
@@ -139,7 +141,17 @@ export default {
   
   .transcript {
     margin-top: 40px;
-    font-size: 2rem;
+    font-size: 1.125rem;
     text-align: center;
-  }
+    color: #a5a5a5;
+    font-style: italic;
+    padding-top: 1rem; /* sama dengan py-4 di Tailwind */
+    padding-bottom: 1rem; /* sama dengan py-4 di Tailwind */
+    padding-left: 1.5rem; /* sama dengan px-6 di Tailwind */
+    padding-right: 2.5rem; /* sama dengan md:px-10 di Tailwind */
+    background-color: rgba(255, 255, 255, 0.1); /* sama dengan bg-white bg-opacity-10 di Tailwind */
+    transition-duration: 150ms; /* sama dengan duration-150 di Tailwind */
+    border-radius: 20%;
+    outline: none;
+ }
 </style>
