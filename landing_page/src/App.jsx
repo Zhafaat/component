@@ -8,8 +8,10 @@ function App() {
   const [date, setDate] = useState('');
 
   useEffect(() => {
-
-    setDate(new Date())
+    
+    let date = new Date()
+    let now = `${date.getDate()} - ${date.getMonth()} - ${date.getFullYear()}`
+    setDate(now)
 
     const storedEmail = JSON.parse(localStorage.getItem('email'));
     if (storedEmail) {
@@ -45,7 +47,7 @@ function App() {
         </h1>
 
         <div className="text-lg md:text-2xl lg:text-4xl py-2 px-4 md:py-4 md:px-10 lg:py-6 lg:px-12 bg-white bg-opacity-10 w-fit mx-auto mb-8 rounded-full">
-          {date.toString()}
+          {date}
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -73,7 +75,7 @@ function App() {
         </form>
 
         <div className="text-lg md:text-2xl lg:text-3xl py-2 px-4 md:py-4 md:px-10 lg:py-6 lg:px-12 bg-white bg-opacity-10 w-fit mx-auto mt-8 mb-8 rounded-lg">
-          Our member:
+          Your Email :
           {allEmail.map((item, index) => (
             <p className="text-lg md:text-1xl lg:text-1xl py-1 px-2 md:py-3 md:px-9 lg:py-5 lg:px-11" key={index}>{item}</p>
           ))}
